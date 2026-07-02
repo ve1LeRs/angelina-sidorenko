@@ -1,7 +1,6 @@
 # Ангелина Сидоренко — сайт-визитка
 
-**Live:** https://angelina-sidorenko.is-a.dev  
-**Резерв:** https://ve1lers.github.io/angelina-sidorenko/
+**Live:** https://ve1lers.github.io/angelina-sidorenko/
 
 Статический одностраничный сайт оперной певицы.
 
