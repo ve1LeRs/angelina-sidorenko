@@ -1,7 +1,6 @@
 # Ангелина Сидоренко — сайт-визитка
 
-**Live:** https://angelina-sidorenko.is-a.dev/ *(после одобрения PR)*  
-**Сейчас:** https://ve1lers.github.io/angelina-sidorenko/
+**Live:** https://ve1lers.github.io/angelina-sidorenko/
 
 Статический одностраничный сайт оперной певицы.
 
@@ -16,10 +15,12 @@ python -m http.server 8765
 ## Обновить сайт в интернете
 
 ```powershell
-.\deploy.ps1
+git add .
+git commit -m "update"
+git push origin main
 ```
 
-Или вручную: `git add .` → `git commit -m "update"` → `git push`
+Или: `.\deploy.ps1`
 
 ## Файлы
 
