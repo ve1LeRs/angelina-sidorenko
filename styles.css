@@ -444,11 +444,23 @@ img { max-width: 100%; display: block; }
   font-size: 1.1rem;
   color: var(--color-gold);
   font-weight: 600;
+  align-self: start;
 }
 
-.timeline__item p {
+.timeline__entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline__entries li {
   color: var(--color-text-muted);
   font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.timeline__entries li + li {
+  margin-top: 0.45rem;
 }
 
 /* ===== Repertoire ===== */
@@ -1089,7 +1101,7 @@ img { max-width: 100%; display: block; }
     font-size: 1rem;
   }
 
-  .timeline__item p {
+  .timeline__entries li {
     font-size: 0.9rem;
   }
 
