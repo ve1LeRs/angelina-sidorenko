@@ -182,9 +182,12 @@ img { max-width: 100%; display: block; }
   position: relative;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   overflow: hidden;
+  padding-top: var(--header-height);
+  padding-bottom: 1.5rem;
+  box-sizing: border-box;
   background:
     radial-gradient(ellipse at 20% 50%, rgba(74, 14, 46, 0.6) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
@@ -200,8 +203,13 @@ img { max-width: 100%; display: block; }
 
 .hero__content {
   position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
   text-align: center;
-  padding-top: var(--header-height);
+  padding: 1.5rem 0 2rem;
 }
 
 .hero__label {
@@ -282,10 +290,8 @@ img { max-width: 100%; display: block; }
 .hero__dot { color: var(--color-gold); margin: 0 0.5rem; }
 
 .hero__scroll {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
