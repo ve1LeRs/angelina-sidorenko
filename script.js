@@ -45,7 +45,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, observerOptions);
 
-document.querySelectorAll('.timeline__item, .repertoire__card, .gallery__item').forEach(el => {
+document.querySelectorAll('.timeline__item, .repertoire__card').forEach(el => {
   observer.observe(el);
 });
 
