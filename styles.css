@@ -818,6 +818,30 @@ img { max-width: 100%; display: block; }
 
 .form__group textarea { resize: vertical; }
 
+.form__honey {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form__status {
+  min-height: 1.25rem;
+  margin: 0 0 0.75rem;
+  font-size: 0.875rem;
+  color: var(--gold);
+}
+
+.form__status--success {
+  color: #8fd4a8;
+}
+
+.form__status--error {
+  color: #e8a0a0;
+}
+
 /* ===== Footer ===== */
 .footer {
   border-top: 1px solid var(--color-border);
