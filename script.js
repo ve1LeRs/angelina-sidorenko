@@ -62,26 +62,68 @@ document.querySelectorAll('.timeline__item').forEach((item, i) => {
 // Contact form
 const contactForm = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
-const formSubject = document.getElementById('formSubject');
+const FORM_EMAIL = 'angelinasidorenko.spb@gmail.com';
 
 function setFormStatus(message, type = '') {
   formStatus.textContent = message;
   formStatus.className = type ? `form__status form__status--${type}` : 'form__status';
 }
 
-const params = new URLSearchParams(window.location.search);
-if (params.get('sent') === '1') {
-  setFormStatus('Спасибо! Сообщение отправлено. Письмо может прийти в течение нескольких минут.', 'success');
-  history.replaceState(null, '', `${window.location.pathname}#contact`);
-}
+contactForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-contactForm.addEventListener('submit', (e) => {
-  if (contactForm.botcheck.checked) {
-    e.preventDefault();
+  const botcheck = contactForm.querySelector('[name="botcheck"]');
+  if (botcheck instanceof HTMLInputElement && botcheck.checked) {
     return;
   }
 
-  const topicField = contactForm.elements.namedItem('topic');
-  const topic = topicField instanceof HTMLSelectElement ? topicField.value : 'Сообщение с сайта';
-  formSubject.value = `Сайт: ${topic}`;
+  const btn = contactForm.querySelector('button[type="submit"]');
+  const originalText = btn.textContent;
+  const formData = new FormData(contactForm);
+  const topic = formData.get('topic');
+
+  btn.textContent = 'Отправка…';
+  setFormStatus('');
+
+  try {
+    const response = await fetch(`https://formsubmit.co/ajax/${FORM_EMAIL}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        name: formData.get('name'),
+        email: formData.get('email'),
+        topic,
+        message: formData.get('message'),
+        _subject: `Сайт: ${topic}`,
+        _template: 'table',
+        _captcha: 'false'
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || result.success !== 'true') {
+      throw new Error(result.message || 'send failed');
+    }
+
+    contactForm.reset();
+    btn.textContent = 'Отправлено ✓';
+    setFormStatus('Спасибо! Сообщение отправлено.', 'success');
+
+    setTimeout(() => {
+      btn.textContent = originalText;
+      setFormStatus('');
+    }, 4000);
+  } catch (error) {
+    btn.textContent = originalText;
+    setFormStatus(
+      error.message === 'send failed'
+        ? 'Не удалось отправить. Напишите на angelinasidorenko.spb@gmail.com'
+        : `Ошибка: ${error.message}`,
+      'error'
+    );
+  }
 });
