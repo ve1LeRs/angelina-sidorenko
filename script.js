@@ -71,7 +71,7 @@ function setFormStatus(message, type = '') {
 
 const params = new URLSearchParams(window.location.search);
 if (params.get('sent') === '1') {
-  setFormStatus('Спасибо! Сообщение отправлено.', 'success');
+  setFormStatus('Спасибо! Сообщение отправлено. Письмо может прийти в течение нескольких минут.', 'success');
   history.replaceState(null, '', `${window.location.pathname}#contact`);
 }
 
