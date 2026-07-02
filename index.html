@@ -438,7 +438,16 @@
             </li>
           </ul>
         </div>
-        <form class="contact__form" id="contactForm" novalidate>
+        <form
+          class="contact__form"
+          id="contactForm"
+          action="https://formsubmit.co/angelinasidorenko.spb@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_next" value="https://ve1lers.github.io/angelina-sidorenko/?sent=1#contact">
+          <input type="hidden" name="_subject" id="formSubject" value="Сообщение с сайта">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
           <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__group">
             <label for="name">Имя</label>
@@ -450,11 +459,11 @@
           </div>
           <div class="form__group">
             <label for="subject">Тема</label>
-            <select id="subject" name="subject">
-              <option value="concert">Приглашение на концерт</option>
-              <option value="interview">Интервью / СМИ</option>
-              <option value="collab">Сотрудничество</option>
-              <option value="other">Другое</option>
+            <select id="subject" name="Тема">
+              <option value="Приглашение на концерт">Приглашение на концерт</option>
+              <option value="Интервью / СМИ">Интервью / СМИ</option>
+              <option value="Сотрудничество">Сотрудничество</option>
+              <option value="Другое">Другое</option>
             </select>
           </div>
           <div class="form__group">
@@ -462,6 +471,7 @@
             <textarea id="message" name="message" rows="4" required placeholder="Ваше сообщение..."></textarea>
           </div>
           <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+          <p class="form__note">При первой отправке проверьте почту <strong>angelinasidorenko.spb@gmail.com</strong> и папку «Спам» — нужно один раз подтвердить форму по ссылке из письма.</p>
           <button type="submit" class="btn btn--primary btn--full">Отправить</button>
         </form>
       </div>
