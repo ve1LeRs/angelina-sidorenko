@@ -2,12 +2,26 @@
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
+function setMenuOpen(isOpen) {
+  navMenu.classList.toggle('open', isOpen);
+  navToggle.classList.toggle('open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  navToggle.setAttribute('aria-label', isOpen ? 'Закрыть меню' : 'Открыть меню');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 navToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('open');
+  setMenuOpen(!navMenu.classList.contains('open'));
 });
 
 navMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => navMenu.classList.remove('open'));
+  link.addEventListener('click', () => setMenuOpen(false));
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 992 && navMenu.classList.contains('open')) {
+    setMenuOpen(false);
+  }
 });
 
 // Header scroll effect
@@ -15,12 +29,12 @@ const header = document.getElementById('header');
 
 window.addEventListener('scroll', () => {
   header.classList.toggle('header--scrolled', window.scrollY > 50);
-});
+}, { passive: true });
 
 // Scroll reveal
 const observerOptions = {
-  threshold: 0.15,
-  rootMargin: '0px 0px -40px 0px'
+  threshold: 0.12,
+  rootMargin: '0px 0px -24px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
