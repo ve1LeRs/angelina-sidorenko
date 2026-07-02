@@ -825,6 +825,7 @@ img { max-width: 100%; display: block; }
   height: 1px;
   opacity: 0;
   pointer-events: none;
+  appearance: none;
 }
 
 .form__status {

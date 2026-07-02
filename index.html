@@ -438,8 +438,17 @@
             </li>
           </ul>
         </div>
-        <form class="contact__form" id="contactForm" novalidate>
-          <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <form
+          class="contact__form"
+          id="contactForm"
+          action="https://formsubmit.co/angelinasidorenko.spb@gmail.com"
+          method="POST"
+        >
+          <input type="hidden" name="_next" value="https://ve1lers.github.io/angelina-sidorenko/?sent=1#contact">
+          <input type="hidden" name="_subject" id="formSubject" value="Сообщение с сайта">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="checkbox" name="botcheck" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__group">
             <label for="name">Имя</label>
             <input type="text" id="name" name="name" required placeholder="Ваше имя">
