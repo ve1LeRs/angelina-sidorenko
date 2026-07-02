@@ -438,16 +438,7 @@
             </li>
           </ul>
         </div>
-        <form
-          class="contact__form"
-          id="contactForm"
-          action="https://formsubmit.co/angelinasidorenko.spb@gmail.com"
-          method="POST"
-        >
-          <input type="hidden" name="_next" value="https://ve1lers.github.io/angelina-sidorenko/?sent=1#contact">
-          <input type="hidden" name="_subject" id="formSubject" value="Сообщение с сайта">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
+        <form class="contact__form" id="contactForm" novalidate>
           <input type="text" name="_honey" class="form__honey" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form__group">
             <label for="name">Имя</label>
@@ -459,7 +450,7 @@
           </div>
           <div class="form__group">
             <label for="subject">Тема</label>
-            <select id="subject" name="Тема">
+            <select id="subject" name="topic">
               <option value="Приглашение на концерт">Приглашение на концерт</option>
               <option value="Интервью / СМИ">Интервью / СМИ</option>
               <option value="Сотрудничество">Сотрудничество</option>
