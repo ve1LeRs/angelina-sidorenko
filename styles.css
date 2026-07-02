@@ -212,15 +212,16 @@ img { max-width: 100%; display: block; }
   padding-bottom: 1.5rem;
   box-sizing: border-box;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(74, 14, 46, 0.6) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 20%, rgba(201, 168, 76, 0.08) 0%, transparent 50%),
-    var(--color-bg);
+    linear-gradient(135deg, rgba(13, 10, 12, 0.82) 0%, rgba(74, 14, 46, 0.55) 45%, rgba(13, 10, 12, 0.88) 100%),
+    url('images/hero-concert-2022.jpg') center 20% / cover no-repeat;
 }
 
 .hero__overlay {
   position: absolute;
   inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background:
+    radial-gradient(ellipse at 50% 40%, transparent 0%, rgba(13, 10, 12, 0.35) 70%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
   pointer-events: none;
 }
 
@@ -415,6 +416,83 @@ img { max-width: 100%; display: block; }
 .about__teachers strong {
   color: var(--color-text);
   font-weight: 400;
+}
+
+/* ===== Gallery ===== */
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.gallery__item {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: rgba(74, 14, 46, 0.15);
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease, border-color var(--transition);
+}
+
+.gallery__item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery__item:hover {
+  border-color: rgba(201, 168, 76, 0.35);
+}
+
+.gallery__item img {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 0.6s ease;
+}
+
+.gallery__item:hover img {
+  transform: scale(1.03);
+}
+
+.gallery__item--wide {
+  grid-column: 1 / -1;
+}
+
+.gallery__item--wide img {
+  min-height: 340px;
+  max-height: 520px;
+  object-position: center 15%;
+}
+
+.gallery__item figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1rem 1rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--color-text);
+  background: linear-gradient(to top, rgba(13, 10, 12, 0.92), transparent);
+}
+
+.gallery__more {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.gallery__more a {
+  color: var(--color-gold);
+}
+
+.gallery__more a:hover {
+  color: var(--color-gold-light);
 }
 
 .timeline__item {
@@ -964,9 +1042,14 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 900px) {
   .about__grid,
+  .gallery__grid,
   .contact__grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+
+  .gallery__item--wide {
+    grid-column: auto;
   }
 
   .achievements__featured,
@@ -1145,6 +1228,19 @@ img { max-width: 100%; display: block; }
 
   .press__quote p {
     font-size: 0.95rem;
+  }
+
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery__item img {
+    min-height: 220px;
+  }
+
+  .gallery__item--wide img {
+    min-height: 280px;
+    max-height: none;
   }
 
   .media__card,
