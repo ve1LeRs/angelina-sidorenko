@@ -1,5 +1,7 @@
 # Ангелина Сидоренко — сайт-визитка
 
+**Live:** https://ve1lers.github.io/angelina-sidorenko/
+
 Статический одностраничный сайт оперной певицы.
 
 ## Локальный запуск
@@ -9,6 +11,14 @@ python -m http.server 8765
 ```
 
 Открыть: http://localhost:8765
+
+## Обновить сайт в интернете
+
+```powershell
+.\deploy.ps1
+```
+
+Или вручную: `git add .` → `git commit -m "update"` → `git push`
 
 ## Файлы
 
